@@ -1,39 +1,74 @@
 ﻿#include <iostream>
 
+
 using namespace std;
 
 struct Node
 {
-    int data;
-    Node* next;
+	int data;
+	Node* next;
 };
+
+void Insert(Node* target, int data)
+{
+	Node* newNode = new Node;
+	
+	newNode->data = data;
+
+	newNode->next = target->next;
+
+	target->next = newNode;
+}
+
+void Delete(Node* target)
+{
+	Node* removePtr = target->next;
+	target->next = removePtr->next;
+
+	delete removePtr;
+}
+
+void Size(Node* target)
+{
+	int count = 0;
+
+
+
+	while (target != NULL)
+	{
+		count++;
+
+	}
+	cout << count << endl;
+}
+
 
 int main()
 {
-    Node* node = new Node;
+	Node* head = new Node;
 
-    Node* node1 = new Node;
-    node->next = node1;
-    node1->data = 10;
+	head->next = NULL;
 
-    Node* node2 = new Node;
-    node2->data = 20;
+	Insert(head, 10);
+	Insert(head, 20);
+	Insert(head, 30);
 
-    node1->next = node2;
-    node2->next = nullptr;
+	Delete(head);
 
-    // 리스트 순회
-    Node* currentNode = node->next;
 
-    while (currentNode != nullptr)
-    {
-        cout << currentNode->data << endl;
-        currentNode = currentNode->next;
-    }
 
-    delete node;
-    delete node1;
-    delete node2;
+	Node* curPtr = head->next;
 
-    return 0;
+	while (curPtr != NULL)
+	{
+		cout << curPtr->data << endl;
+		curPtr = curPtr->next;
+	}
+	Size(head);
+
+
+	
+
+
+	return 0;
 }
