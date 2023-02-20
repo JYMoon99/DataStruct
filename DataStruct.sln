@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "List_Function", "List_Funct
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DoubleLinkedLisk", "DoubleLinkedLisk\DoubleLinkedLisk.vcxproj", "{8B89E0C7-65FB-40A9-9239-48FB7C5AA8E3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bubble_Sort", "Bubble_Sort\Bubble_Sort.vcxproj", "{DE594689-F835-42F3-9F80-324AA96BFE88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{8B89E0C7-65FB-40A9-9239-48FB7C5AA8E3}.Release|x64.Build.0 = Release|x64
 		{8B89E0C7-65FB-40A9-9239-48FB7C5AA8E3}.Release|x86.ActiveCfg = Release|Win32
 		{8B89E0C7-65FB-40A9-9239-48FB7C5AA8E3}.Release|x86.Build.0 = Release|Win32
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Debug|x64.ActiveCfg = Debug|x64
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Debug|x64.Build.0 = Debug|x64
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Debug|x86.ActiveCfg = Debug|Win32
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Debug|x86.Build.0 = Debug|Win32
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Release|x64.ActiveCfg = Release|x64
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Release|x64.Build.0 = Release|x64
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Release|x86.ActiveCfg = Release|Win32
+		{DE594689-F835-42F3-9F80-324AA96BFE88}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
