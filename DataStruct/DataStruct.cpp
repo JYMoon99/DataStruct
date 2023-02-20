@@ -9,6 +9,9 @@ struct Node
 	Node* prev;
 };
 
+Node* head;
+Node* tail;
+
 void Insert(Node* target, int data)
 {
 	Node* newnode = new Node;
@@ -22,12 +25,48 @@ void Insert(Node* target, int data)
 	
 }
 
+
+// 삭제 함수
+void Remove(Node* target)
+{
+	Node* removePtr = target->next;
+	removePtr->next->prev = target;
+	target->next = removePtr->next;
+	delete removePtr;
+
+}
+
+// 앞에서 출력하는 함수
+void FrontCircuit(Node* target)
+{
+	Node* curPtr = target->next;
+
+	while (curPtr != tail)
+	{
+		cout << curPtr->data << endl;
+		curPtr = curPtr->next;
+	}
+}
+
+void BackCircuit(Node* target)
+{
+	Node* curPtr = target->prev;
+
+	while (curPtr != head)
+	{
+		cout << curPtr->data << endl;
+		curPtr = curPtr->prev;
+	}
+}
+
+
+
 int main()
 {
-	Node* head = new Node;
-	head->prev = NULL;
+	head = new Node;
+	tail = new Node;
 
-	Node* tail = new Node;
+	head->prev = NULL;
 	tail->next = NULL;
 
 	head->next = tail;
@@ -63,6 +102,9 @@ int main()
 	//	cout << backPtr->data << endl;
 	//	backPtr = backPtr->prev;
 	//}
+
+	FrontCircuit(head);
+	BackCircuit(tail);
 
 	return 0;
 }
