@@ -3,12 +3,35 @@
 
 using namespace std;
 
-class CircleQueue
+template <class T>
+class Stack
 {
+private:
+	int top = -1;
+	T buffer[SIZE] = {0, };
+
+
 public:
-	bool Empty() // 비어있는가?
+
+	bool IsFull()
 	{
-		if (rear == front)
+		if (SIZE - 1 == top)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+			
+
+
+	}
+
+
+	bool IsEmpty()
+	{
+		if (top == -1)
 		{
 			return true;
 		}
@@ -18,72 +41,60 @@ public:
 		}
 	}
 
-	bool IsFull() // 가득 차 있는가?
-	{
-		if ((rear + 1) % SIZE == front)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 
-	}
-
-	void Enqueue(int data)
+	void Push(int data)
 	{
 		if (IsFull() == true)
 		{
-			cout << "Queue Is Full" << endl;
+			cout << "Stack Is Full" << endl;
 		}
 		else
 		{
-			rear = (rear + 1) % SIZE;
-			buffer[rear] = data;
+			buffer[++top] = data;
 		}
+
 
 	}
 
-	int Dequeue()
+	T Pop()
 	{
-		if (Empty() == true)
+		if (IsEmpty() == true)
 		{
-			cout << "Queue Is Empty" << endl;
-
+			cout << "Stack Is Empty" << endl;
 		}
 		else
 		{
-			front = (front + 1) % SIZE;
-			int temp = buffer[front];
-			buffer[front] = NULL;
-			return temp;
+			//int temp = buffer[top];
+			//buffer[top] = NULL;
+			//buffer[--top];
+			//return temp;
+
+			return buffer[top--];
+
+
 		}
-
 	}
+	
 
 
-
-private:
-	int rear = SIZE - 1;
-	int front = SIZE - 1;
-	int buffer[SIZE] = { 0, };
 };
-
 
 int main()
 {
-	CircleQueue queue;
-	queue.Enqueue(10);
-	queue.Enqueue(20);
-	queue.Enqueue(30);
+	Stack<int> stack;
+	stack.Push(10);
+	stack.Push(20);
+	stack.Push(30);
+	stack.Push(40);
 
 
-	while (!queue.Empty())
+	while (!stack.IsEmpty())
 	{
-		cout << queue.Dequeue() << endl;
+		cout << stack.Pop() << endl;
 	}
-	queue.Dequeue();
-	return 0;
 
-} 
+	stack.Pop();
+
+
+	return 0;
+}
