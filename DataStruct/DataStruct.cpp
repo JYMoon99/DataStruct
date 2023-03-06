@@ -1,50 +1,104 @@
 ﻿#include <iostream>
-#define SIZE 10
+#define SIZE 8
 
 using namespace std;
 
+int heapArray[SIZE];
+int index = 0;
+
+void Insert(int data)
+{
+	if (index == SIZE - 1)
+	{
+		cout << "Heap IS FULL" << endl;
+
+		return;
+	}
+
+	heapArray[++index] = data;
+
+	// heapify
+	int child = index;
+	int parent = index / 2;
+
+	while (child > 1)
+	{
+		if (heapArray[parent] < heapArray[child])
+		{
+			swap(heapArray[parent], heapArray[child]);
+		}
+
+		child = parent;
+		parent = child / 2;
+
+	}
+
+}
+
+int Delete()
+{
+	int result = heapArray[1];
+
+	if (index == 0)
+	{
+		cout << "Heap is Empty" << endl;
+		return 0;
+	}
+
+	heapArray[1] = heapArray[index];
+	heapArray[index] = NULL;
+
+	index--;
+
+	// heapify
+	int parent = 1;
+
+	while (parent * 2 <= index)
+	{
+		int child = parent * 2;
+
+		if (heapArray[child] < heapArray[child + 1])
+		{
+			child++;
+		}
+
+		if (heapArray[child] < heapArray[parent])
+		{
+			break;
+		}
+
+		swap(heapArray[child], heapArray[parent]);
+		parent = child;
+	}
+
+	return result;
+
+}
+
+
 int main()
 {
-	// 계수 정렬
+	// 자료구조 (힙)
+	// 최댓값과 최솟값을 찾아내는 연산을
+	// 빠르게 수행하기 위해 고안된 완전 이진트리를
+	// 기반으로 한 자료구조입니다.
+
 	/*
-	// 데이터의 값을 직접 비교하지 않고, 단순하게 각 숫자가
-	// 몇 개 있는지 갯수를 세어 지정한 다음 정렬하는 알고리즘
-
-	int array[5] = { 0, };
-	int item[SIZE] = { 1, 5, 3, 2, 1, 2, 2, 3, 4, 4 };
-
-	for (int i = 0; i < SIZE; i++)
-	{
-		array[item[i] - 1] += 1;
-	}
-
-	for (int i = 0; i < 5; i++)
-	{
-		cout << array[i] << endl;
-	}
-
+	부모 노드 접근 공식 : 자식 노드 index / 2
+	왼쪽 자식 노드 접근 공식 : 부모 노드 index * 2
+	오른쪽 자식 노드 접근 공식 : 부모 노드 index * 2 + 1
 	*/
 
-	// 대문자로 입력한 문자를 소문자로 바꾸는 알고리즘
+	Insert(10);
+	Insert(20);
+	Insert(30);
 
-	string content;
+	Delete();
 
-	cin >> content;
-
-	for (int i = 0; i < content.length(); i++)
+	for (int i = 1; i < index; i++)
 	{
-		if (content[i] >= 'A' && content[i] <= 'Z')
-		{
-			content[i] += 32;
-		}
-		else if (content[i] >= 'a' && content[i] <= 'z')
-		{
-			content[i] -= 32;
-		}
-
+		cout << heapArray[i] << endl;
 	}
-
-	cout << content << endl;
 
 	return 0;
 }
